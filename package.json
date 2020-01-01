@@ -1,0 +1,44 @@
+{
+  "name": "wprerender",
+  "version": "1.0.0",
+  "description": "Pre render webpack plugin for sites and SPAs.",
+  "license": "MIT",
+  "main": "index.js",
+  "keywords": [
+    "prerender",
+    "spa",
+    "webpack",
+    "ssr"
+  ],
+  "author": "Christian Hentschel (https://twitter.com/chentschel_)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chentschel/wprerende.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chentschel/wprerende/issues",
+    "email": "chentschel@gmail.com"
+  },
+  "dependencies": {
+    "@prerenderer/prerenderer": "^0.7.2",
+    "chrome-aws-lambda": "^2.0.1",
+    "promise-limit": "^2.5.0",
+    "puppeteer-core": "^2.0.0",
+    "html-minifier": "^3.5.16"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^5.3.5",
+    "puppeteer": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "homepage": "https://github.com/chentschel/wprerender#readme",
+  "directories": {
+    "test": "test"
+  }
+}
