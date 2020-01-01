@@ -5,7 +5,7 @@ const SimpleRenderer = require('./simple-render');
 
 const { minify } = require('html-minifier');
 
-function WPrerender(...args) {
+function WPRenderer(...args) {
   const rendererOptions = {};
 
   // get options
@@ -15,7 +15,7 @@ function WPrerender(...args) {
   this._options.renderer = this._options.renderer || new SimpleRenderer(Object.assign({}, { headless: true }, rendererOptions));
 }
 
-WPrerender.prototype.apply = function(compiler) {
+WPRenderer.prototype.apply = function(compiler) {
 
   const compilerFS = compiler.outputFileSystem;
 
@@ -42,7 +42,7 @@ WPrerender.prototype.apply = function(compiler) {
         const isValid = renderedRoutes.every(r => typeof r === 'object');
 
         if (!isValid) {
-          throw new Error('[w-prerender] Rendered routes are empty. Check `context` object in postProcess.');
+          throw new Error('[wp-renderer] Rendered routes are empty. Check `context` object in postProcess.');
         }
 
         return renderedRoutes;
@@ -77,7 +77,7 @@ WPrerender.prototype.apply = function(compiler) {
               return new Promise((resolve, reject) => {
                 compilerFS.writeFile(processedRoute.outputPath, processedRoute.html.trim(), err => {
                   if (err) {
-                    reject(`[w-prerender] Unable to write rendered route to file "${processedRoute.outputPath}" \n ${err}.`);
+                    reject(`[wp-renderer] Unable to write rendered route to file "${processedRoute.outputPath}" \n ${err}.`);
                   } else {
                     resolve();
                   }
@@ -86,7 +86,7 @@ WPrerender.prototype.apply = function(compiler) {
             })
             .catch(err => {
               if (typeof err === 'string') {
-                err = `[w-prerender] Unable to create directory ${path.dirname(processedRoute.outputPath)} for route ${processedRoute.route}. \n ${err}`;
+                err = `[wp-renderer] Unable to create directory ${path.dirname(processedRoute.outputPath)} for route ${processedRoute.route}. \n ${err}`;
               }
 
               throw err;
@@ -101,7 +101,7 @@ WPrerender.prototype.apply = function(compiler) {
       })
       .catch(err => {
         PrerendererInstance.destroy();
-        const msg = '[w-prerender] Unable to prerender all routes!';
+        const msg = '[wp-renderer] Unable to prerender all routes!';
         console.error(msg);
         compilation.errors.push(new Error(msg));
         done();
@@ -109,7 +109,7 @@ WPrerender.prototype.apply = function(compiler) {
   }
 
   if (compiler.hooks) {
-    const plugin = { name: 'WPrerender' };
+    const plugin = { name: 'WPRenderer' };
     compiler.hooks.afterEmit.tapAsync(plugin, afterEmit);
 
   } else {
@@ -117,4 +117,4 @@ WPrerender.prototype.apply = function(compiler) {
   }
 }
 
-module.exports = WPrerender;
+module.exports = WPRenderer;

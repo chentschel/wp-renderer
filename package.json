@@ -1,7 +1,7 @@
 {
-  "name": "wprerender",
+  "name": "wp-renderer",
   "version": "1.0.0",
-  "description": "Pre render webpack plugin for sites and SPAs.",
+  "description": "Pre renderer webpack plugin for sites and SPAs.",
   "license": "MIT",
   "main": "index.js",
   "keywords": [
@@ -13,10 +13,10 @@
   "author": "Christian Hentschel (https://twitter.com/chentschel_)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chentschel/wprerende.git"
+    "url": "git+https://github.com/chentschel/wp-renderer.git"
   },
   "bugs": {
-    "url": "https://github.com/chentschel/wprerende/issues",
+    "url": "https://github.com/chentschel/wp-renderer/issues",
     "email": "chentschel@gmail.com"
   },
   "dependencies": {
@@ -37,7 +37,7 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "homepage": "https://github.com/chentschel/wprerender#readme",
+  "homepage": "https://github.com/chentschel/wp-renderer#readme",
   "directories": {
     "test": "test"
   }

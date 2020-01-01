@@ -1,5 +1,4 @@
 const chrome = require('chrome-aws-lambda');
-const puppeteer = require('puppeteer-core');
 const promiseLimit = require('promise-limit');
 
 const waitForRender = function(options) {
