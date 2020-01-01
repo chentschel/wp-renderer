@@ -6,13 +6,12 @@ const SimpleRenderer = require('./simple-render');
 const { minify } = require('html-minifier');
 
 function WPRenderer(...args) {
-  const rendererOptions = {};
 
   // get options
   this._options = args[0] || {};
 
   this._options.server = this._options.server || {};
-  this._options.renderer = this._options.renderer || new SimpleRenderer(Object.assign({}, { headless: true }, rendererOptions));
+  this._options.renderer = this._options.renderer;
 }
 
 WPRenderer.prototype.apply = function(compiler) {
@@ -116,5 +115,7 @@ WPRenderer.prototype.apply = function(compiler) {
     compiler.plugin('after-emit', afterEmit);
   }
 }
+
+WPRenderer.SimpleRenderer = SimpleRenderer;
 
 module.exports = WPRenderer;
