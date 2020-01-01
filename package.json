@@ -1,6 +1,6 @@
 {
   "name": "wp-renderer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pre renderer webpack plugin for sites and SPAs.",
   "license": "MIT",
   "main": "index.js",
