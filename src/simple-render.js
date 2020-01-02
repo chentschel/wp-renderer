@@ -1,4 +1,6 @@
 const chrome = require('@serverless-chrome/lambda');
+const puppeteer = require('puppeteer-core');
+
 const promiseLimit = require('promise-limit');
 
 const waitForRender = function(options) {
@@ -53,7 +55,7 @@ class SimpleRenderer {
 
       // This will try to use puppeteer or fallback to puppeteer-core
       // We included puppeteer as a dev dependency.
-      this._puppeteer = await chrome.puppeteer.launch(this._rendererOptions);
+      this._puppeteer = await puppeteer.launch(this._rendererOptions);
 
     } catch (e) {
       console.error(e);
