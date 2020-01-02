@@ -1,4 +1,6 @@
-const chrome = require('chrome-aws-lambda');
+const launch = require('@serverless-chrome/lambda');
+const fetch = require('node-fetch');
+
 const puppeteer = require('puppeteer-core');
 const promiseLimit = require('promise-limit');
 
@@ -46,15 +48,16 @@ class SimpleRenderer {
   async initialize () {
     try {
 
-      // wire chrome-aws
-      this._rendererOptions.args = chrome.args;
-      this._rendererOptions.headless = chrome.headless;
-      this._rendererOptions.defaultViewport = chrome.defaultViewport,
-      this._rendererOptions.executablePath = await chrome.executablePath;
-      console.log(this._rendererOptions);
-      // This will try to use puppeteer or fallback to puppeteer-core
-      // We included puppeteer as a dev dependency.
-      this._puppeteer = await puppeteer.launch(this._rendererOptions);
+      const instance = await launch({
+        flags: ["--v=-99", "--headless"],
+      });
+
+      const ret = await fetch(`${instance.url}/json/version`);
+      const ws = await ret.json();
+
+      this._puppeteer = await puppeteer.connect(
+        browserWSEndpoint = ws.webSocketDebuggerUrl
+      );
 
     } catch (e) {
       console.error(e);
