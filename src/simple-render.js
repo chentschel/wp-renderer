@@ -56,7 +56,7 @@ class SimpleRenderer {
       const ws = await ret.json();
 
       this._puppeteer = await puppeteer.connect({
-        browserWSEndpoint = ws.webSocketDebuggerUrl
+        browserWSEndpoint: ws.webSocketDebuggerUrl
       });
 
     } catch (e) {
