@@ -1,4 +1,4 @@
-const chrome = require('chrome-aws-lambda');
+const chrome = require('@serverless-chrome/lambda');
 const promiseLimit = require('promise-limit');
 
 const waitForRender = function(options) {
