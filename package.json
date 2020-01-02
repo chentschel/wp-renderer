@@ -1,6 +1,6 @@
 {
   "name": "wp-renderer",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Pre renderer webpack plugin for sites and SPAs.",
   "license": "MIT",
   "main": "index.js",
@@ -34,7 +34,7 @@
     "eslint-config-standard": "^5.3.5"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.16.0"
   },
   "homepage": "https://github.com/chentschel/wp-renderer#readme",
   "directories": {
