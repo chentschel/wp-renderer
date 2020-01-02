@@ -51,7 +51,7 @@ class SimpleRenderer {
       this._rendererOptions.headless = chrome.headless;
       this._rendererOptions.defaultViewport = chrome.defaultViewport,
       this._rendererOptions.executablePath = await chrome.executablePath;
-
+      console.log(this._rendererOptions);
       // This will try to use puppeteer or fallback to puppeteer-core
       // We included puppeteer as a dev dependency.
       this._puppeteer = await puppeteer.launch(this._rendererOptions);
